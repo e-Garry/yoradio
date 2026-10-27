@@ -1,0 +1,32 @@
+#ifndef MYOPTIONS_H
+#define MYOPTIONS_H
+
+/*
+ * Copy this file to myoptions.h in this directory.
+ * Fill in the GPIO numbers for YOUR wiring before flashing.
+ * GPIO assignments are deliberately not guessed: ESP32-S3-Zero pin availability
+ * and the way the modules are wired must be checked first.
+ */
+
+#define L10N_LANGUAGE EN
+#define DSP_MODEL DSP_SH1106
+
+/* SH1106 I2C — replace 255 with the GPIOs actually wired to SDA and SCL. */
+#define I2C_SDA 255
+#define I2C_SCL 255
+
+/* I2S PCM5100A — replace 255 with the GPIOs actually wired to DIN, BCLK and LRC. */
+#define I2S_DOUT 255
+#define I2S_BCLK 255
+#define I2S_LRC 255
+
+/* I2S DAC is used, not VS1053. */
+#define VS1053_CS 255
+
+/* Rotary encoder — set GPIOs for A/left, button and B/right if present. */
+#define ENC_BTNL 255
+#define ENC_BTNB 255
+#define ENC_BTNR 255
+#define ENC_INTERNALPULLUP true
+
+#endif
