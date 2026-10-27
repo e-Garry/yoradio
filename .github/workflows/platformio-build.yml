@@ -18,7 +18,7 @@ jobs:
         with:
           path: |
             ~/.platformio
-            .pio
+            yoRadio/.pio
           key: platformio-${{ runner.os }}-${{ hashFiles('yoRadio/platformio.ini') }}
           restore-keys: |
             platformio-${{ runner.os }}-
@@ -30,3 +30,17 @@ jobs:
       - name: Build firmware
         working-directory: yoRadio
         run: pio run
+      - name: Build SPIFFS image
+        working-directory: yoRadio
+        run: pio run -t buildfs
+      - name: Upload firmware files
+        uses: actions/upload-artifact@v4
+        with:
+          name: yoradio-esp32-s3-zero-sh1106
+          path: |
+            yoRadio/.pio/build/esp32-s3-devkitc-1/firmware.bin
+            yoRadio/.pio/build/esp32-s3-devkitc-1/bootloader.bin
+            yoRadio/.pio/build/esp32-s3-devkitc-1/partitions.bin
+            yoRadio/.pio/build/esp32-s3-devkitc-1/spiffs.bin
+          if-no-files-found: warn
+          retention-days: 14
