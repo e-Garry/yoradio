@@ -6,7 +6,7 @@ on:
       - platformio/esp32-s3-zero-sh1106
   pull_request:
     branches:
-      - main
+      - main 
   workflow_dispatch:
 
 jobs: 
