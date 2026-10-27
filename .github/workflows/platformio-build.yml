@@ -3,7 +3,7 @@ name: PlatformIO build
 on:
   push:
     branches:
-      - platformio/esp32-s3-zero-sh1106
+      - platformio/esp32-s3-zero-sh1106 
   pull_request:
     branches: 
       - main
