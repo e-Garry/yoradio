@@ -12,8 +12,8 @@ This is the first migration step. The original yoRadio source and SPIFFS data la
 ## Configure
 
 1. Open the `yoRadio` directory (the one containing `platformio.ini`) in VS Code.
-2. Copy `myoptions.h.example` to `myoptions.h`.
-3. Set I2C, I2S and encoder GPIO numbers in `myoptions.h` to match the actual wiring. The example intentionally uses 255 placeholders rather than inventing pin assignments.
+2. `myoptions.h` is already configured for the current wiring; `myoptions.h.example` is a template with the same values.
+3. GPIO mapping: SH1106 SDA=8/SCL=9; PCM5100A BCLK=5/LRCK=6/DOUT=7; encoder left=1/button=2/right=3.
 4. Build with PlatformIO: `pio run`.
 
 ## Build / upload
