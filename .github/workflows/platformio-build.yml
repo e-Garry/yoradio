@@ -33,6 +33,11 @@ jobs:
       - name: Build SPIFFS image
         working-directory: yoRadio
         run: pio run -t buildfs
+      - name: Prepare boot_app0 image
+        run: |
+          BOOT_APP0="$(find ~/.platformio/packages -path '*/tools/partitions/boot_app0.bin' -print -quit)"
+          test -n "$BOOT_APP0"
+          cp "$BOOT_APP0" yoRadio/.pio/build/esp32-s3-zero/boot_app0.bin
       - name: Upload firmware files
         uses: actions/upload-artifact@v4
         with:
@@ -40,6 +45,7 @@ jobs:
           path: |
             yoRadio/.pio/build/esp32-s3-zero/firmware.bin
             yoRadio/.pio/build/esp32-s3-zero/bootloader.bin
+            yoRadio/.pio/build/esp32-s3-zero/boot_app0.bin
             yoRadio/.pio/build/esp32-s3-zero/partitions.bin
             yoRadio/.pio/build/esp32-s3-zero/spiffs.bin
           if-no-files-found: warn
