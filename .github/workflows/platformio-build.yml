@@ -38,9 +38,9 @@ jobs:
         with:
           name: yoradio-esp32-s3-zero-sh1106
           path: |
-            yoRadio/.pio/build/esp32-s3-devkitc-1/firmware.bin
-            yoRadio/.pio/build/esp32-s3-devkitc-1/bootloader.bin
-            yoRadio/.pio/build/esp32-s3-devkitc-1/partitions.bin
-            yoRadio/.pio/build/esp32-s3-devkitc-1/spiffs.bin
+            yoRadio/.pio/build/esp32-s3-zero/firmware.bin
+            yoRadio/.pio/build/esp32-s3-zero/bootloader.bin
+            yoRadio/.pio/build/esp32-s3-zero/partitions.bin
+            yoRadio/.pio/build/esp32-s3-zero/spiffs.bin
           if-no-files-found: warn
           retention-days: 14
