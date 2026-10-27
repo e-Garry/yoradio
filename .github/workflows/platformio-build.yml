@@ -1,0 +1,32 @@
+name: PlatformIO build
+
+on:
+  push:
+    branches:
+      - platformio/esp32-s3-zero-sh1106
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.platformio
+            .pio
+          key: platformio-${{ runner.os }}-${{ hashFiles('yoRadio/platformio.ini') }}
+          restore-keys: |
+            platformio-${{ runner.os }}-
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install PlatformIO
+        run: pip install platformio
+      - name: Build firmware
+        working-directory: yoRadio
+        run: pio run
