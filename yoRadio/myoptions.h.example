@@ -4,7 +4,7 @@
 /*
  * Copy this file to myoptions.h in this directory.
  * I2C and I2S GPIOs below were supplied from the user's ESPHome configuration.
- * Encoder GPIOs still need to be set to match the actual wiring.
+ * GPIO mapping is configured for the user's current hardware.
  */
 
 #define L10N_LANGUAGE EN
@@ -22,10 +22,10 @@
 /* I2S DAC is used, not VS1053. */
 #define VS1053_CS 255
 
-/* Rotary encoder — set GPIOs for A/left, button and B/right if present. */
-#define ENC_BTNL 255
-#define ENC_BTNB 255
-#define ENC_BTNR 255
+/* Rotary encoder: left/A, push button, right/B */
+#define ENC_BTNL 1
+#define ENC_BTNB 2
+#define ENC_BTNR 3
 #define ENC_INTERNALPULLUP true
 
 #endif
