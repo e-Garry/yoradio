@@ -27,6 +27,16 @@ jobs:
           python-version: '3.x'
       - name: Install PlatformIO
         run: pip install platformio
+      - name: Inject Wi-Fi credentials into SPIFFS
+        if: github.event_name != 'pull_request'
+        env:
+          WIFI_SSID: ${{ secrets.WIFI_SSID }}
+          WIFI_PASSWORD: ${{ secrets.WIFI_PASSWORD }}
+        run: |
+          test -n "$WIFI_SSID" || { echo "Missing repository secret WIFI_SSID"; exit 1; }
+          test -n "$WIFI_PASSWORD" || { echo "Missing repository secret WIFI_PASSWORD"; exit 1; }
+          mkdir -p yoRadio/data/data
+          printf '%s\\t%s\\n' "$WIFI_SSID" "$WIFI_PASSWORD" > yoRadio/data/data/wifi.csv
       - name: Build firmware
         working-directory: yoRadio
         run: pio run
